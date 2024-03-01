@@ -19,11 +19,27 @@ static size_t pat_lines_len(char **lines)
     while (lines[i] != NULL){
         if (my_str_len(lines[i]) != len){
             my_dputstr(2, "Error, pattern is not a rectangular len length.\n");
-            return (-1);
+            return (0);
         }
         i++;
     }
     return (len);
+}
+
+static int break_line(patern *p, char *raw, int i, int l)
+{
+    if (raw[0] == '@' || raw[i - 1] == '@') {
+        my_dputstr(2, "Error, '@' cant be at the begining or the end.\n");
+        return (1);
+    }
+    p->lines = my_split(raw, '@');
+    if (p->lines == NULL) {
+        my_dputstr(2, "Not enough memory\n");
+        return (1);
+    }
+    p->height = l + 1;
+    p->width = pat_lines_len(p->lines);
+    return (0);
 }
 
 static int init_patern(patern *p, char *raw)
@@ -34,36 +50,26 @@ static int init_patern(patern *p, char *raw)
     for (i = 0; raw[i] != '\0'; i++){
         if (raw[i] != '#' && raw[i] != '@' && raw[i] != '.'){
             my_dputstr(2, "Error, invalid characters in pattern.\n");
-            return (-1);
+            return (1);
         }
         if (raw[i] == '@' && raw[i + 1] == '@'){
             my_dputstr(2, "Error, invalid characters in pattern " \
                 "(two '@'s together).\n");
-            return (-1);
+            return (1);
         }
         if (raw[i] == '@')
             l++;
     }
-    if (raw[0] == '@' || raw[i - 1] == '@') {
-        my_dputstr(2, "Error, '@' cant be at the begining or the end.\n");
-        return (-1);
-    }
-    p->lines = my_split(raw, '@');
-    if (p->lines == NULL) {
-        my_dputstr(2, "Not enough memory\n");
-        return (-1);
-    }
-    p->height = l + 1;
-    p->width = pat_lines_len(p->lines);
-    return (0);
+    return (break_line(p, raw, i, l));
 }
 
 static void free_str_array(char **a)
 {
     if (a == NULL)
         return;
-    for (int i = 0; a[i] != NULL; i++)
+    for (int i = 0; a[i] != NULL; i++) {
         free(a[i]);
+    }
     free(a);
 }
 
@@ -92,14 +98,14 @@ frac *prepare_fractal(size_t nb, char *black, char *white)
 
     if (f == NULL)
         return (NULL);
-    if (init_patern(&f->black, black) == -1 ||
-        init_patern(&f->white, white) == -1) {
+    if (init_patern(&f->black, black) || init_patern(&f->white, white)) {
         destroy_fractal(f);
         return (NULL);
     }
     if (f->black.width != f->white.width ||
-        f->black.height != f->white.height) {
-        my_dputstr(2, "Error, pattern sizes are not the same.\n");
+        f->black.height != f->white.height || f->black.width *
+        f->black.height * f->white.width * f->white.height == 0) {
+        my_dputstr(2, "Error, pattern sizes are invalid or not the same.\n");
         destroy_fractal(f);
         return (NULL);
     }

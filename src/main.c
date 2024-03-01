@@ -13,9 +13,9 @@ void print_str_array(char **a)
     size_t i = 0;
 
     while (a[i] != NULL){
-	    my_dputstr(1, a[i]);
-	    my_putchar('\n');
-	    i++;
+        my_dputstr(1, a[i]);
+        my_putchar('\n');
+        i++;
     }
 }
 
