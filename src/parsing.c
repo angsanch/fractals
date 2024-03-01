@@ -2,25 +2,24 @@
 ** EPITECH PROJECT, 2024
 ** duostumper01
 ** File description:
-** parsing the patters
+** parsing the patterns
 */
 
 #include "../include/fractals.h"
 #include "../include/my.h"
 
-static int first_len(char *p)
+static int pat_lines_len(char **lines)
 {
     int i = 0;
 
-    while (p[i] != '@'){
+    while (lines[i] != NULL){
+	if (my_str_len(lines[i]) != my_str_len(lines[i + 1])){
+	    my_dputstr(2, "Error, pattern is not a rectangular len length.\n");
+	    return (-1);
+	}
 	i++;
     }
-    return (i);
-}
-
-static pat_lines(char *p)
-{
-    
+    return (my_strlen(lines[1]);
 }
 
 static int init_pattern(pattern *p, char *raw)
@@ -41,18 +40,24 @@ static int init_pattern(pattern *p, char *raw)
 	if (p[i] == '@')
 	    l++;
     }
+    p->lines = my_split(raw, '@');
     p->height = l + 1;
-    p->width = first_len(p);
+    p->width = pat_lines_len(p->lines);
     return (0);
 }
 
-frac *prepare_fractal(size_t size, char *black, char *white)
+frac *prepare_fractal(size_t size, int nb, char *black, char *white)
 {
     frac *f = malloc(sizeof(frac));
+    int height = 0;
+
     if (f == NULL)
 	return (NULL);
     init_patern(&f->black, black);
     init_patern(&f->white, white);
+    f->depth = nb;
+    f->height = my_compute_power_rec(&f->black.height, nb);
+    f->width = my_compute_power_rec(&f->black.width, nb);
     return 0;
 }
 
@@ -71,9 +76,4 @@ void destroy_fractal(frac *f)
     free_str_array(f->black.lines);
     free_str_array(f->white.lines);
     free(f);
-}
-
-void print_str_array()
-{
-    //
 }
