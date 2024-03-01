@@ -106,8 +106,8 @@ frac *prepare_fractal(size_t nb, char *black, char *white)
     f->depth = nb;
     f->height = my_compute_power_rec(f->black.height, nb);
     f->width = my_compute_power_rec(f->black.width, nb);
-    create_str_array(f->width, f->height);
-    return 0;
+    f->fractal = create_str_array(f->width, f->height);
+    return (f);
 }
 
 void destroy_fractal(frac *f)

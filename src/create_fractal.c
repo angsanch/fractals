@@ -29,8 +29,8 @@ static void divide_table(frac *f, rect *container, size_t depth, int black)
     }
     for (size_t y = 0; y < f->black.height; y ++) {
         for (size_t x = 0; x < f->black.width; x ++) {
-            r.x = container->x + (x * f->black.width);
-            r.y = container->y + (y * f->black.height);
+            r.x = container->x + (x * r.width);
+            r.y = container->y + (y * r.height);
             divide_table(f, &r, depth - 1,
                 p->lines[y][x] == '#');
         }

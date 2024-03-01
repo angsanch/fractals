@@ -10,10 +10,12 @@
 
 void print_str_array(char **a)
 {
-    while (*a != NULL){
-	my_dputstr(1, *a);
-	my_putchar('\n');
-	*a++;
+    size_t i = 0;
+
+    while (a[i] != NULL){
+	    my_dputstr(1, a[i]);
+	    my_putchar('\n');
+	    i++;
     }
 }
 
