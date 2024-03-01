@@ -12,13 +12,13 @@ void my_putchar(char c)
     write(1, &c, 1);
 }
 
-int my_putstr(char const *str)
+int my_putstr(int fd, char const *str)
 {
-    int l = 0;
+    int i = 0;
 
-    while (str[l] != '\0') {
-        my_putchar(str[l]);
-        l++;
+    while (str[i] != '\0') {
+        write(fd, str + i, 1);
+        i ++;
     }
     return (0);
 }
