@@ -22,6 +22,7 @@ typedef struct fractal_table {
     size_t height;
     patern black;
     patern white;
+    size_t depth;
 } frac;
 
 //Sofia's zone
