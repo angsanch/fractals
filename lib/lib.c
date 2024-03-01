@@ -12,7 +12,7 @@ void my_putchar(char c)
     write(1, &c, 1);
 }
 
-int my_putstr(int fd, char const *str)
+int my_dputstr(int fd, char const *str)
 {
     int i = 0;
 
