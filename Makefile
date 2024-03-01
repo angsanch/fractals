@@ -10,7 +10,10 @@ CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 
 C_FILES = lib/lib.c \
+			lib/my_split.c \
 			src/main.c \
+			src/create_fractal.c \
+			src/parsing.c \
 
 O_FILES = $(C_FILES:.c=.o)
 
