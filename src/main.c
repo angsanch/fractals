@@ -5,11 +5,15 @@
 ** main funct
 */
 
+#include "../include/my.h"
+#include "../include/fractals.h"
+
 int main(int argc, char **argv)
 {
     if (argc != 3){
-	my_putstr("Invalid amount of arguments.\n");
-	return 84;
+        my_putstr("Invalid amount of arguments.\n");
+        return (84);
     }
-    return 0;
+    (void)argv;
+    return (0);
 }

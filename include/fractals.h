@@ -20,8 +20,8 @@ typedef struct fractal_table {
     char **fractal;
     size_t width;
     size_t height;
-    partern black;
-    partern white;
+    patern black;
+    patern white;
 } frac;
 
 #endif
