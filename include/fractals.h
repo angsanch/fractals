@@ -24,4 +24,8 @@ typedef struct fractal_table {
     patern white;
 } frac;
 
+frac *prepare_fractals(size_t size, char *black, char *white);
+void destroy_fractal(frac *f);
+void print_str_array(char **arr);
+
 #endif
