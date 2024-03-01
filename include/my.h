@@ -18,7 +18,7 @@
 
 void my_putchar(char c);
 int my_dputstr(int fd, char const *str);
-int my_str_len(char const *str);
+size_t my_str_len(char const *str);
 int my_getnbr(char const *str);
 char **my_split(char const *s, char c);
 int my_compute_power_rec(int nb, int p);

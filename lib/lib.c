@@ -23,9 +23,9 @@ int my_dputstr(int fd, char const *str)
     return (0);
 }
 
-int my_str_len(char const *str)
+size_t my_str_len(char const *str)
 {
-    int i = 0;
+    size_t i = 0;
 
     while (str[i] != '\0')
         i++;
