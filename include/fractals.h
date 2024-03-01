@@ -25,6 +25,13 @@ typedef struct fractal_table {
     size_t depth;
 } frac;
 
+typedef struct rectangle_data {
+    size_t x;
+    size_t y;
+    size_t width;
+    size_t height;
+} rect;
+
 //Sofia's zone
 frac *prepare_fractal(size_t size, char *black, char *white);
 void destroy_fractal(frac *f);
