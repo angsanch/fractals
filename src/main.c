@@ -8,6 +8,15 @@
 #include "../include/my.h"
 #include "../include/fractals.h"
 
+void print_str_array(char **a)
+{
+    while (*a != NULL){
+	my_dputstr(1, *a);
+	my_putchar('\n');
+	*a++;
+    }
+}
+
 int main(int argc, char **argv)
 {
     frac *f;
