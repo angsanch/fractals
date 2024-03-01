@@ -9,14 +9,14 @@ CC=gcc
 
 CFLAGS=-Wall -Werror -Wextra
 
-C_FILES =
+C_FILES = src/main.c \
 
 O_FILES = $(C_FILES:.c=.o)
 
 NAME=fractals
 
 $(NAME): $(O_FILES)
-	$(CC) $(CFLAGS) -o $(NAME) src/$(NAME).c $(O_FILES) lib/libmy.a
+	$(CC) $(CFLAGS) -o $(NAME) $(O_FILES)
 
 all: $(NAME)
 
