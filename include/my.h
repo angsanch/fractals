@@ -23,5 +23,4 @@ int my_getnbr(char const *str);
 char **my_split(char const *s, char c);
 int my_compute_power_rec(int nb, int p);
 
-
 #endif

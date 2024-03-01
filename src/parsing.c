@@ -19,10 +19,10 @@ static int pat_lines_len(char **lines)
 	}
 	i++;
     }
-    return (my_strlen(lines[1]);
+    return (my_str_len(lines[1]);
 }
 
-static int init_pattern(pattern *p, char *raw)
+static int init_pattern(patern *p, char *raw)
 {
     int l = 0;
     int h = 0;
@@ -46,7 +46,7 @@ static int init_pattern(pattern *p, char *raw)
     return (0);
 }
 
-frac *prepare_fractal(size_t size, int nb, char *black, char *white)
+frac *prepare_fractal(size_t nb, char *black, char *white)
 {
     frac *f = malloc(sizeof(frac));
     int height = 0;

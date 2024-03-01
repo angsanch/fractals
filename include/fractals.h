@@ -1,3 +1,4 @@
+
 /*
 ** EPITECH PROJECT, 2024
 ** fractals.h
@@ -33,7 +34,7 @@ typedef struct rectangle_data {
 } rect;
 
 //Sofia's zone
-frac *prepare_fractal(size_t size, char *black, char *white);
+frac *prepare_fractal(size_t nb, char *black, char *white);
 void destroy_fractal(frac *f);
 void print_str_array(char **arr);
 
