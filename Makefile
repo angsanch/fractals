@@ -11,6 +11,7 @@ CFLAGS=-Wall -Werror -Wextra
 
 C_FILES = lib/lib.c \
 			lib/my_split.c \
+			lib/my_compute_power_rec.c \
 			src/main.c \
 			src/create_fractal.c \
 			src/parsing.c \
