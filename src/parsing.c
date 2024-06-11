@@ -26,7 +26,7 @@ static size_t pat_lines_len(char **lines)
     return (len);
 }
 
-static int break_line(patern *p, char *raw, int i, int l)
+static int break_line(patern_t *p, char *raw, int i, int l)
 {
     if (raw[0] == '@' || raw[i - 1] == '@') {
         my_dputstr(2, "Error, '@' cant be at the begining or the end.\n");
@@ -42,7 +42,7 @@ static int break_line(patern *p, char *raw, int i, int l)
     return (0);
 }
 
-static int init_patern(patern *p, char *raw)
+static int init_patern(patern_t *p, char *raw)
 {
     int l = 0;
     int i;
@@ -92,9 +92,9 @@ static char **create_str_array(size_t width, size_t height)
     return (s);
 }
 
-frac *prepare_fractal(size_t nb, char *black, char *white)
+frac_t *prepare_fractal(size_t nb, char *black, char *white)
 {
-    frac *f = malloc(sizeof(frac));
+    frac_t *f = malloc(sizeof(frac_t));
 
     if (f == NULL)
         return (NULL);
@@ -116,7 +116,7 @@ frac *prepare_fractal(size_t nb, char *black, char *white)
     return (f);
 }
 
-void destroy_fractal(frac *f)
+void destroy_fractal(frac_t *f)
 {
     if (f == NULL)
     return;

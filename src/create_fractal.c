@@ -8,7 +8,8 @@
 #include "../include/my.h"
 #include "../include/fractals.h"
 
-static void draw_pattern(frac *f, patern *p, size_t x_offset, size_t y_offset)
+static void draw_pattern(frac_t *f, patern_t *p,
+    size_t x_offset, size_t y_offset)
 {
     for (size_t y = 0; y < p->height; y ++) {
         for (size_t x = 0; x < p->width; x ++) {
@@ -17,11 +18,11 @@ static void draw_pattern(frac *f, patern *p, size_t x_offset, size_t y_offset)
     }
 }
 
-static void divide_table(frac *f, rect *container, size_t depth, int black)
+static void divide_table(frac_t *f, rect_t *container, size_t depth, int black)
 {
-    rect r = {0, 0, container->width / f->black.width,
+    rect_t r = {0, 0, container->width / f->black.width,
         container->height / f->black.height};
-    patern *p = (black) ? &f->black : &f->white;
+    patern_t *p = (black) ? &f->black : &f->white;
 
     if (depth == 1) {
         draw_pattern(f, p, container->x, container->y);
@@ -37,9 +38,9 @@ static void divide_table(frac *f, rect *container, size_t depth, int black)
     }
 }
 
-void create_fractal(frac *f)
+void create_fractal(frac_t *f)
 {
-    rect r = {0, 0, f->width, f->height};
+    rect_t r = {0, 0, f->width, f->height};
 
     if (f->depth == 0) {
         f->fractal[0][0] = f->black.lines[0][0];

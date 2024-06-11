@@ -21,7 +21,7 @@ void print_str_array(char **a)
 
 int main(int argc, char **argv)
 {
-    frac *f;
+    frac_t *f;
 
     if (argc != 4){
         my_dputstr(2, "Invalid amount of arguments.\n");
